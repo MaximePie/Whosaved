@@ -1,0 +1,597 @@
+# depslib dependency file v1.0
+1427211985 source:p:\personnel\codeblocks\sdl\sdl-1.2.15\map\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<SDL/SDL.h>
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_audio.h"
+	"SDL_cdrom.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_loadso.h"
+	"SDL_mutex.h"
+	"SDL_rwops.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_video.h"
+	"SDL_version.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1326114587 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_config.h
+	"SDL_platform.h"
+	"SDL_config_dreamcast.h"
+	"SDL_config_macos.h"
+	"SDL_config_macosx.h"
+	"SDL_config_symbian.h"
+	"SDL_config_win32.h"
+	"SDL_config_os2.h"
+	"SDL_config_minimal.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_platform.h
+
+1326114594 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_config_win32.h
+	"SDL_platform.h"
+
+1326114600 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\begin_code.h
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\close_code.h
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_cdrom.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_active.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_quit.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_active.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keysym.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_keysym.h
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1325742239 p:\personnel\codeblocks\sdl\sdl-1.2.15\include\sdl\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1431445930 source:e:\codeblocks\projects\map\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<SDL/SDL.h>
+	<time.h>
+
+1428498546 source:h:\codeblocks\projects\map\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<SDL/SDL.h>
+
+1430236412 source:f:\codeblocks\projects\map\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<SDL/SDL.h>
+
+1431446316 source:e:\codeblocks\projects\map\combat.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<SDL/SDL.h>
+	"SDL/SDL_image.h"
+	"SDL/SDL_ttf.h"
+
+1431777696 source:j:\codeblocks\projects\map\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"combat.h"
+
+1431446316 j:\codeblocks\projects\map\combat.h
+
+1431795026 source:i:\codeblocks\projects\projet\monde ouvert\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+
+1431798425 source:c:\users\chatmalow\documents\projet\monde ouvert\main.cpp
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+
+1433264121 source:c:\users\chatmalow\documents\projet\monde ouvert\main.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Combat.h"
+	"Monde_Ouvert.h"
+	"Ecran_Titre.h"
+
+1441313674 c:\users\chatmalow\documents\projet\monde ouvert\structures.h
+	"Constantes.h"
+
+1443914766 c:\users\chatmalow\documents\projet\monde ouvert\constantes.h
+
+1441304014 source:c:\users\chatmalow\documents\projet\monde ouvert\load_items.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+
+1441304014 c:\users\chatmalow\documents\projet\monde ouvert\load_items.h
+
+1441565504 source:c:\users\chatmalow\documents\projet\monde ouvert\structures.c
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+
+1441300998 c:\users\chatmalow\documents\projet\monde ouvert\combat.h
+
+1441565464 source:c:\users\chatmalow\documents\projet\monde ouvert\combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1432083509 c:\users\chatmalow\documents\projet\monde ouvert\fenetres_combat.h
+
+1432588289 source:c:\users\chatmalow\documents\projet\monde ouvert\fenetre_combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1432476247 source:c:\users\chatmalow\documents\projet\monde ouvert\interface_principale.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1441312692 source:c:\users\chatmalow\documents\projet\monde ouvert\monde_ouvert.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Interface_Principale.h"
+	"Load_Items.h"
+	"Combat.h"
+	"cartes.h"
+
+1433809831 c:\users\chatmalow\documents\projet\monde ouvert\monde_ouvert.h
+
+1432076001 c:\users\chatmalow\documents\projet\monde ouvert\tests.h
+
+1432078660 source:c:\users\chatmalow\documents\projet\monde ouvert\tests.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1441363959 c:\users\chatmalow\documents\projet\monde ouvert\actions_combat.h
+
+1441564765 source:c:\users\chatmalow\documents\projet\monde ouvert\actions_combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+	"LV_UP.h"
+
+1432229625 c:\users\chatmalow\documents\projet\monde ouvert\lv_up.h
+
+1432229625 source:c:\users\chatmalow\documents\projet\monde ouvert\lv_up.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1433835411 source:c:\users\chatmalow\documents\projet\monde ouvert\ecran_titre.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1432559243 c:\users\chatmalow\documents\projet\monde ouvert\ecran_titre.h
+
+1433268781 source:c:\users\chatmalow\documents\projet\monde ouvert\carte_1.c
+
+1433267580 c:\users\chatmalow\documents\projet\monde ouvert\cartes.h
+
+1433810266 c:\users\chatmalow\documents\projet\monde ouvert\interface_principale.h
+
+1441564766 source:c:\users\admin\documents\projets\whosaved\monde ouvert\actions_combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+	"LV_UP.h"
+
+1441313676 c:\users\admin\documents\projets\whosaved\monde ouvert\structures.h
+	"Constantes.h"
+
+1443914768 c:\users\admin\documents\projets\whosaved\monde ouvert\constantes.h
+
+1441304016 c:\users\admin\documents\projets\whosaved\monde ouvert\load_items.h
+
+1432083510 c:\users\admin\documents\projets\whosaved\monde ouvert\fenetres_combat.h
+
+1441363960 c:\users\admin\documents\projets\whosaved\monde ouvert\actions_combat.h
+
+1432229626 c:\users\admin\documents\projets\whosaved\monde ouvert\lv_up.h
+
+1433268782 source:c:\users\admin\documents\projets\whosaved\monde ouvert\carte_1.c
+
+1441565466 source:c:\users\admin\documents\projets\whosaved\monde ouvert\combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1433835412 source:c:\users\admin\documents\projets\whosaved\monde ouvert\ecran_titre.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1432588290 source:c:\users\admin\documents\projets\whosaved\monde ouvert\fenetre_combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1432476248 source:c:\users\admin\documents\projets\whosaved\monde ouvert\interface_principale.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1441304016 source:c:\users\admin\documents\projets\whosaved\monde ouvert\load_items.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+
+1432229626 source:c:\users\admin\documents\projets\whosaved\monde ouvert\lv_up.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1433264122 source:c:\users\admin\documents\projets\whosaved\monde ouvert\main.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Combat.h"
+	"Monde_Ouvert.h"
+	"Ecran_Titre.h"
+
+1441301000 c:\users\admin\documents\projets\whosaved\monde ouvert\combat.h
+
+1433809832 c:\users\admin\documents\projets\whosaved\monde ouvert\monde_ouvert.h
+
+1432559244 c:\users\admin\documents\projets\whosaved\monde ouvert\ecran_titre.h
+
+1447153841 source:c:\users\admin\documents\projets\whosaved\monde ouvert\monde_ouvert.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Interface_Principale.h"
+	"Load_Items.h"
+	"Combat.h"
+	"cartes.h"
+
+1433810268 c:\users\admin\documents\projets\whosaved\monde ouvert\interface_principale.h
+
+1433267582 c:\users\admin\documents\projets\whosaved\monde ouvert\cartes.h
+
+1441565506 source:c:\users\admin\documents\projets\whosaved\monde ouvert\structures.c
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+
+1432078662 source:c:\users\admin\documents\projets\whosaved\monde ouvert\tests.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+

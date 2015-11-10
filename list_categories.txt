@@ -1,0 +1,11 @@
+Attaque
+Defense
+Sorts
+S-Attaque
+S-Soin
+S-Illusion
+Arme
+Armure
+Accessoires
+Consommables
+Objets Spéciaux

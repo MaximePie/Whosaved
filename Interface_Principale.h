@@ -1,0 +1,6 @@
+#ifndef INTERFACE_PRINCIPALE_H_INCLUDED
+#define INTERFACE_PRINCIPALE_H_INCLUDED
+
+void InterfacePricipale(sJoueur *Perso, sMESS_ITEMS *item_data);
+
+#endif // INTERFACE_PRINCIPALE_H_INCLUDED
