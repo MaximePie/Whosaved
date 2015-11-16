@@ -1,54 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
+	<File name="Structures.c" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4835" topLine="217" />
+		</Cursor>
+	</File>
+	<File name="Fenetre_Combat.c" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Monde_Ouvert.c" open="1" top="1" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="20060" topLine="889" />
+		</Cursor>
+	</File>
 	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="560" topLine="17" />
+			<Cursor1 position="563" topLine="15" />
 		</Cursor>
 	</File>
-	<File name="LV_UP.c" open="1" top="0" tabpos="34" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Interface_Principale.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Ecran_Titre.h" open="1" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Ecran_Titre.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1876" topLine="62" />
+		</Cursor>
+	</File>
+	<File name="LV_UP.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Fenetres_Combat.h" open="1" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Monde_Ouvert.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Monde_Ouvert.c" open="1" top="1" tabpos="30" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Structures.h" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="7861" topLine="334" />
+			<Cursor1 position="2286" topLine="113" />
 		</Cursor>
 	</File>
-	<File name="Load_Items.c" open="1" top="0" tabpos="38" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Ecran_Titre.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Combat.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Combat.c" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="16769" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Constantes.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="112" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Actions_Combat.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12254" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Fenetres_Combat.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Load_Items.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="55" />
 		</Cursor>
 	</File>
-	<File name="Constantes.h" open="1" top="0" tabpos="32" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Actions_Combat.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="235" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Ecran_Titre.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1431" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="Actions_Combat.c" open="1" top="0" tabpos="33" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12254" topLine="342" />
-		</Cursor>
-	</File>
-	<File name="Combat.c" open="1" top="0" tabpos="31" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="16769" topLine="463" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

@@ -25,8 +25,6 @@ int main(int argc, char *argv[])
 
     Afficher_Menu(ecran);
 
-    Monde_Ouvert(ecran);
-
     TTF_Quit();
 
  return EXIT_SUCCESS;

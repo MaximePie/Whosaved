@@ -72,9 +72,10 @@ void Afficher_Menu(SDL_Surface *ecran)
                 position.y = 100;
                 texte = TTF_RenderText_Blended(police,"Nouvelle Partie",Verte);
                 SDL_BlitSurface(texte,NULL,ecran,&position);
-
                 position.x=0;
                 position.y=0;
+
+                Monde_Ouvert(ecran);
 
                 break;
 

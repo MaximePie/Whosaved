@@ -50,6 +50,13 @@ typedef struct
 
 }sEnnemi;
 
+typedef struct{
+
+    int biere;
+
+
+}sQueteconditions;
+
 typedef struct
 {
     int fileVersion;
@@ -118,6 +125,7 @@ typedef struct
 void Ini_Joueur(sJoueur* Perso);
 void Ini_Ennemi(sEnnemi* Monstren,int IDMonstre);
 void Ini_Sprites(sStatiques *Refresh, sJoueur* Perso,int IDMonstre);
+void ini_Quete(sQueteconditions *Quete_cond);
 sMESS_ITEMS Load_Skills_Monstre(int IDMonstre);
 
 #endif // STRUCTURES_H_INCLUDED

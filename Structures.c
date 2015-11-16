@@ -227,3 +227,9 @@ sMESS_ITEMS Load_Skills_Monstre(int IDMonstre)
         break;
     }
 }
+
+void ini_Quete(sQueteconditions *Quete_cond)
+{
+    Quete_cond->biere = 0;
+}
+

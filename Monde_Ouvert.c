@@ -19,6 +19,77 @@
 #include "cartes.h"
 ////////////////////////////////////////////////////////////////////
 
+void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran)
+ {
+     SDL_Color couleur = {0,0,0};
+     SDL_Surface *Txt = NULL;
+     int i = 0;
+
+     SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
+
+    SDL_Surface *error = IMG_Load("Sprites/error.png");
+
+    TTF_Font *police=TTF_OpenFont("carolingia.ttf",26); //C'est temporaire, c'est pour afficher les coordonnées du personnage, ainsi que le type de case sur lequel il se trouve.
+
+
+    SDL_Rect pos_boite = {0,0}, pos_texte = {30,350};
+    int continuer = 1;
+
+
+    SDL_Event event;
+
+    for (i = 0; i < 2; i++)
+                    {
+                        Txt = TTF_RenderText_Blended(police,texte[i],couleur);
+                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
+                        SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+
+
+                        SDL_Flip(ecran);
+
+                            if (i == 1)
+                        {
+                            break;
+                        }
+
+                         while(continuer) // On attend que le joueur appuie sur w pour fermer la fenêtre. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
+                        {
+                        SDL_WaitEvent(&event);
+                            switch(event.type)
+                            {
+                                case SDL_KEYDOWN:
+                                switch (event.key.keysym.sym)
+                                {
+                                    case SDLK_z:
+                                    continuer = 0;
+                                    break;
+
+                                    default:
+                                        ;
+                                }
+                            }
+                        }
+                        continuer = 1;
+                    }
+
+
+ }
+
+
+void succes(void)
+{
+    SDL_Surface *success = IMG_Load("succes.png");
+    SDL_Rect pos = {0,0};
+    SDL_Surface *ecran=SDL_SetVideoMode(LARGEUR_ECRAN,HAUTEUR_ECRAN,32,SDL_HWSURFACE);
+
+
+    SDL_BlitSurface(success,NULL,ecran,&pos);
+    SDL_Flip(ecran);
+    SDL_Delay(1000);
+}
+
+
+
 
 SDL_Surface * Load_Map(int map_id[2], int *Carte[15][20])
 {
@@ -211,17 +282,21 @@ return position;
 }
 
 
-void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rect Decoupe_1, SDL_Rect decoupePerso,int *Carte[15][20],SDL_Surface *ecran)
+void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rect Decoupe_1, SDL_Rect decoupePerso,int *Carte[15][20],SDL_Surface *ecran,sQueteconditions *Quete_cond)
 {
     SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
 
     SDL_Surface *error = IMG_Load("Sprites/error.png");
 
+    TTF_Font *police=TTF_OpenFont("carolingia.ttf",26); //C'est temporaire, c'est pour afficher les coordonnées du personnage, ainsi que le type de case sur lequel il se trouve.
+    SDL_Color couleur = {255,255,255};
 
-    SDL_Rect pos_boite = {0,0};
-    int continuer = 1;
 
-    char Texte[99][99][999];
+    SDL_Rect pos_boite = {0,0}, pos_texte = {30,350};
+    int continuer = 1, i = 0;
+
+    char Texte[99][999];
+    SDL_Surface *Txt;
 
     SDL_Event event;
 
@@ -229,53 +304,150 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
 
     SDL_Delay(50);
 
-    SDL_BlitSurface(error,NULL,ecran,&pos_boite);
-    SDL_Flip(ecran);
 
 
+    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
 
     switch(map_id[0])
     {
-    case 1:
+    case 1: // RDC taverne 1
         switch(map_id[1])
         {
 
         case 1:
-            if(Carte[pos_perso_y ][pos_perso_x - 1] == 2  && decoupePerso.x == 187)
+            if(Carte[pos_perso_y ][pos_perso_x - 1] == 2  && decoupePerso.x == 187) //Si le joueur parle au tavernier
+                {
+                    sprintf(Texte[0],"Hey !");
+                    sprintf(Texte[1],"Tu veux une bonne biere sa mere ? ");
 
 
-                do{
+                    Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
+                    SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
+                    SDL_BlitSurface(Txt,NULL,ecran,&pos_texte);
+                    SDL_Flip(ecran);
 
-                     SDL_WaitEvent(&event);
-                        switch(event.type)
+                    for (i = 0; i < 2; i++)
+                    {
+                        Txt = TTF_RenderText_Blended(police,Texte[i],couleur);
+                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
+                        SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+
+
+                        SDL_Flip(ecran);
+
+                            if (i == 1)
                         {
-                            case SDL_KEYDOWN:
-                            switch (event.key.keysym.sym)
+                            break;
+                        }
+
+                         while(continuer) // On attend que le joueur appuie sur w pour fermer la fenêtre. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
+                        {
+                        SDL_WaitEvent(&event);
+                            switch(event.type)
+                            {
+                                case SDL_KEYDOWN:
+                                switch (event.key.keysym.sym)
                                 {
                                     case SDLK_z:
-                                    SDL_Delay(50);
                                     continuer = 0;
                                     break;
 
                                     default:
                                         ;
+                                }
+                            }
+                        }
+                        continuer = 1;
+                    } //Fin dialogue 1.
+
+                    while(continuer) // On attend que le joueur appuie sur y ou n  pour Oui ou Non. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
+                        {
+                        SDL_WaitEvent(&event);
+                            switch(event.type)
+                            {
+                                case SDL_KEYDOWN:
+                                switch (event.key.keysym.sym)
+                                {
+
+                                    case SDLK_y:
+                                    sprintf(Texte[0],"Vas-y mon p'tit, fais-toi plaisir ! ");
+                                    Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
+                                    SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
+                                    SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+                                    Quete_cond->biere = 1;
+
+                                    SDL_Flip(ecran);
+
+                                    continuer = 0;
+                                    break;
+
+                                    case SDLK_n:
+                                        sprintf(Texte[0],"Non ? C'est dommage... elle est bonne !");
+                                        Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
+                                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
+                                        SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+
+                                        SDL_Flip(ecran);
+                                        continuer = 0;
+                                        break;
 
 
+
+                                default:
+                                ;
 
                                 }
+                            }
                         }
 
+
+                        continuer = 1;
+                     while(continuer) // (Une fois qu'il a donné sa réponse, soit il boit, soit il ne boit pas.) On attend que le joueur appuie sur w pour fermer la fenêtre. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
+                        {
+                        SDL_WaitEvent(&event);
+                            switch(event.type)
+                            {
+                                case SDL_KEYDOWN:
+                                switch (event.key.keysym.sym)
+                                {
+                                    case SDLK_z:
+                                    continuer = 0;
+                                    break;
+
+                                    default:
+                                        ;
+                                }
+                            }
+                        }
+
+
+                }
+            break;
+
+        case 2: //Taverne sous_sol
+
+                if ((Carte[pos_perso_y + 1 ][pos_perso_x - 1]  == 102 || Carte[pos_perso_y +1][pos_perso_x - 1] == 101) && decoupePerso.x == 187) //Si coffre du bas
+                    {
                         SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
                         SDL_Flip(ecran);
+                        SDL_Delay(3000);
 
-                }while(continuer);
+
+
+                    }
 
             break;
 
         }
+
+
     break;
 
+
+
     }
+        SDL_EnableKeyRepeat(20,0);
+
 
 }
 
@@ -325,9 +497,7 @@ int warp_chck(int pos_perso_x, int pos_perso_y, int *Carte[15][20], int *map_id)
 void test(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rect Decoupe_1, SDL_Rect decoupePerso,int *Carte[15][20],SDL_Surface *ecran)
 {
     SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
-
     SDL_Surface *error = IMG_Load("Sprites/error.png");
-
 
     SDL_Rect pos_boite = {0,0};
     int continuer = 1;
@@ -349,18 +519,28 @@ void test(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rec
 
 
 
-void Warp(int *map_id,int *pos_perso_x, int *pos_perso_y)
+void Warp(int *map_id,int *pos_perso_x, int *pos_perso_y,sQueteconditions *queteCond)
 {
+
+    switch(map_id[0])
+    {
+        case 1:
+
     switch(map_id[1])
     {
 
-    case 1:
+    case 1: //Si taverne
 
         if(*pos_perso_x == 4 && *pos_perso_y == 11) //Si escalier qui descend
         {
             map_id[1]=2;
             *pos_perso_x = 3;
             *pos_perso_y = 1;
+        }
+
+        if (*pos_perso_x  == 18 && *pos_perso_y  == 0)
+        {
+            SDL_Delay(1000);
         }
 
     break;
@@ -376,13 +556,16 @@ void Warp(int *map_id,int *pos_perso_x, int *pos_perso_y)
 
 
     }
+    break;
+
+    }
 
 
 }
 
 
 
-int pass_chck(SDL_Rect positionperso, SDL_Event event, int carte [15][20], int pos_perso_x, int pos_perso_y) //La fonction qui donne la permission de se déplacer. Supprimez les commentaires pour l'essayer.
+int pass_chck(SDL_Rect positionperso, SDL_Event event, int carte [15][20], int pos_perso_x, int pos_perso_y, sQueteconditions *Quete_cond) //La fonction qui donne la permission de se déplacer. Supprimez les commentaires pour l'essayer.
 {
 
     int carteID = 1;
@@ -402,6 +585,9 @@ int pass_chck(SDL_Rect positionperso, SDL_Event event, int carte [15][20], int p
 
 
                 case SDLK_UP:
+
+
+
                     if (carte [pos_perso_y+1][pos_perso_x-1] != 1 && carte [pos_perso_y+1][pos_perso_x-1] != 138) // Pour des questions d'ajustement j'ai dû rajouter et retirer des +1/-1/+2/0 un peu partout. (Sinon le personnage pouvait marcher dans les murs, il fait 2*32 pixels de haut !)
                         return 0;
                     break;
@@ -417,6 +603,8 @@ int pass_chck(SDL_Rect positionperso, SDL_Event event, int carte [15][20], int p
                     break;
 
                 case SDLK_LEFT:
+
+
                     if (carte [pos_perso_y+2][pos_perso_x-2] != 1)
                         return 0;
                     break;
@@ -447,7 +635,7 @@ void Monde_Ouvert(SDL_Surface *ecran)
 
 
     int compteur=0, randCombat=0;
-    int pos_perso_x = 4, pos_perso_y = 10;
+    int pos_perso_x = 18, pos_perso_y = 5; //Anciennement 4-10
     int continuer = 1;
 
 
@@ -490,9 +678,11 @@ void Monde_Ouvert(SDL_Surface *ecran)
 
 
     sJoueur Perso;
+    sQueteconditions queteCond;
     sMESS_ITEMS skills_data = MESS_LoadItems("Skills.bin", 1);
     sMESS_ITEMS items_data = MESS_LoadItems("Inventaire1.bin",1);
     Ini_Joueur(&Perso);
+    ini_Quete(&queteCond);
 
 positionpersonnage.x=pos_perso_x*32 -32   + 3; //On colle le personnage à sa position pos_perso multipliés par le nombre de pixels (Ici pos_perso_x = 4 et pos_perso_y = 10 (On fait - 32 car le début d'un tableau commence à 0 et non à 1)
 positionpersonnage.y=pos_perso_y*32 ;
@@ -543,9 +733,7 @@ SDL_Flip(ecran);
 
 
                 case SDLK_z:
-
-                   // Action(map_id, pos_perso_x, pos_perso_y, Pos_1, Decoupe_1, decoupePerso, &Carte,ecran);
-
+                    Action(map_id, pos_perso_x, pos_perso_y, Pos_1, Decoupe_1, decoupePerso, &Carte,ecran,&queteCond);
                     break;
 
 
@@ -555,8 +743,12 @@ SDL_Flip(ecran);
                 decoupePerso.w=82;
 
 
+                if (!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond))
+                {
+
+                }
                 // On envoie en paramètres la position (en pixels) le type d'event (SDLK_UP,DOWN,ETC.), et les positions en cases.
-                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y) ) //On demande la permission de se déplacer. Si la fonction pass_chck renvoie 0 on annule le déplacement.
+                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond) ) //On demande la permission de se déplacer. Si la fonction pass_chck renvoie 0 on annule le déplacement.
                     break;
 
                 else
@@ -604,7 +796,7 @@ SDL_Flip(ecran);
                 decoupePerso.x=9;
                 decoupePerso.w=40;
 
-                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y))
+                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond))
                     break;
 
             for(compteur=0;compteur<=8;compteur++)
@@ -649,7 +841,7 @@ SDL_Flip(ecran);
                 decoupePerso.x=121;
                 decoupePerso.w=48;
 
-                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y) )
+                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond) )
                     break;
 
                     for(compteur=0;compteur<=8;compteur++)
@@ -693,7 +885,7 @@ SDL_Flip(ecran);
                 decoupePerso.x=66;
                 decoupePerso.w=45;
 
-                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y) )
+                if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond) )
                     break;
 
                     for(compteur=0;compteur<=8;compteur++)
@@ -735,7 +927,7 @@ SDL_Flip(ecran);
        if(warp_chck(pos_perso_x,pos_perso_y,&Carte, map_id))
         {
 
-            Warp(map_id,&pos_perso_x,&pos_perso_y);
+            Warp(map_id,&pos_perso_x,&pos_perso_y,&queteCond);
 
             Map = Load_Map(map_id,&Carte);
             Sprite_1 = load_sprite(map_id,1);
@@ -785,11 +977,18 @@ SDL_Flip(ecran);
         SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
     }
 
+    if ((Carte[pos_perso_y + 1 ][pos_perso_x - 1]  == 102 || Carte[pos_perso_y +1][pos_perso_x - 1] == 101) && decoupePerso.x == 187)
+        {
+            Verte.b = 255;
+        }
+
     texte[0]='\0';
     sprintf(texte,"%d : %d       %d",Carte[pos_perso_y+2][pos_perso_x-1], pos_perso_y, pos_perso_x);
-    sprintf(texte,"%d : %d       %d",Carte[pos_perso_y][pos_perso_x - 1], pos_perso_y, pos_perso_x);
+    sprintf(texte,"%d : %d       %d",Carte[pos_perso_y + 1][pos_perso_x - 1], pos_perso_y, pos_perso_x);
     Texte = TTF_RenderText_Blended(police,texte,Verte);
     SDL_BlitSurface(Texte,NULL,ecran,&position);
+
+    Verte.b = 0;
 
     SDL_Flip(ecran);
 }
