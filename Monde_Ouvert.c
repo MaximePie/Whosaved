@@ -19,9 +19,9 @@
 #include "cartes.h"
 ////////////////////////////////////////////////////////////////////
 
-void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran)
+void parler(int debut, int fin, char *texte[99][999], SDL_Surface *ecran)
  {
-     SDL_Color couleur = {0,0,0};
+     SDL_Color couleur = {255,0,0};
      SDL_Surface *Txt = NULL;
      int i = 0;
 
@@ -38,7 +38,7 @@ void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran)
 
     SDL_Event event;
 
-    for (i = 0; i < 2; i++)
+    for (i = debut ; i < fin ; i++)
                     {
                         Txt = TTF_RenderText_Blended(police,texte[i],couleur);
                         SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
@@ -321,7 +321,7 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
                     sprintf(Texte[1],"Tu veux une bonne biere sa mere ? ");
 
 
-                    Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
+                   /* Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
                     SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
                     SDL_BlitSurface(Txt,NULL,ecran,&pos_texte);
                     SDL_Flip(ecran);
@@ -358,7 +358,8 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
                             }
                         }
                         continuer = 1;
-                    } //Fin dialogue 1.
+                    } *///Fin dialogue 1.
+                    parler(0,1,Texte,ecran);
 
                     while(continuer) // On attend que le joueur appuie sur y ou n  pour Oui ou Non. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
                         {
@@ -635,7 +636,7 @@ void Monde_Ouvert(SDL_Surface *ecran)
 
 
     int compteur=0, randCombat=0;
-    int pos_perso_x = 18, pos_perso_y = 5; //Anciennement 4-10
+    int pos_perso_x = 4, pos_perso_y = 10; //Anciennement 4-10
     int continuer = 1;
 
 
@@ -647,6 +648,7 @@ void Monde_Ouvert(SDL_Surface *ecran)
 
     SDL_Event event;
     SDL_Rect positionpersonnage, positionMap = {0,0}, decoupePerso={9,0,40,78};
+
 
 
 
@@ -687,10 +689,16 @@ void Monde_Ouvert(SDL_Surface *ecran)
 positionpersonnage.x=pos_perso_x*32 -32   + 3; //On colle le personnage à sa position pos_perso multipliés par le nombre de pixels (Ici pos_perso_x = 4 et pos_perso_y = 10 (On fait - 32 car le début d'un tableau commence à 0 et non à 1)
 positionpersonnage.y=pos_perso_y*32 ;
 
+SDL_Rect rect_zone_perso = {positionpersonnage.x - 32,positionpersonnage.y - 32,decoupePerso.w*3,decoupePerso.h*2};
+SDL_Rect pos_zone_perso = {positionpersonnage.x - 32, positionpersonnage.y - 32};
 
-SDL_BlitSurface(Map, NULL, ecran, &positionMap);
+
+SDL_BlitSurface(Map, NULL,ecran, &positionMap); //Blitage de la map en grand
+
+
 SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
 SDL_BlitSurface(Sprite_1,&Decoupe_1,ecran,&Pos_1);
+SDL_Flip(ecran);
 
 texte[0]='\0';
 sprintf(texte,"%d : %d %d",Carte[pos_perso_y][pos_perso_x], pos_perso_x, pos_perso_y);
@@ -722,7 +730,7 @@ SDL_Flip(ecran);
                 case SDLK_a:
                 InterfacePricipale(&Perso,&items_data);
                 SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format,0,0,0));
-                SDL_BlitSurface(Map, NULL, ecran, &positionMap);
+                SDL_BlitSurface(Map, &rect_zone_perso,ecran, &pos_zone_perso);
                 SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
                 break;
 
@@ -743,6 +751,7 @@ SDL_Flip(ecran);
                 decoupePerso.w=82;
 
 
+
                 if (!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond))
                 {
 
@@ -751,8 +760,10 @@ SDL_Flip(ecran);
                 if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond) ) //On demande la permission de se déplacer. Si la fonction pass_chck renvoie 0 on annule le déplacement.
                     break;
 
-                else
-                {
+
+
+
+
                     for(compteur=0;compteur<=8;compteur++)
                     {
 
@@ -768,7 +779,7 @@ SDL_Flip(ecran);
                         decoupePerso.y=165;
 
                         positionpersonnage.y-=4;
-                        SDL_BlitSurface(Map,NULL,ecran,&positionMap);
+                        SDL_BlitSurface(Map, &rect_zone_perso,ecran, &pos_zone_perso);
                         if(positionpersonnage.y<Pos_1.y)
                             {
                             SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
@@ -785,7 +796,16 @@ SDL_Flip(ecran);
 
                     pos_perso_y--;
                     positionpersonnage.y = pos_perso_y*32;
-                }
+
+                    pos_zone_perso.y = positionpersonnage.y - 32;
+                    rect_zone_perso.y = positionpersonnage.y - 32;
+
+                    if (pos_perso_y <= 0)
+                    {
+                    pos_zone_perso.y = 0;
+                    rect_zone_perso.y = 0;
+                    }
+
 
 
         break;
@@ -796,8 +816,10 @@ SDL_Flip(ecran);
                 decoupePerso.x=9;
                 decoupePerso.w=40;
 
+
                 if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond))
                     break;
+
 
             for(compteur=0;compteur<=8;compteur++)
                 {
@@ -814,7 +836,7 @@ SDL_Flip(ecran);
 
                     positionpersonnage.y+=4;
 
-                    SDL_BlitSurface(Map,NULL,ecran,&positionMap);
+                    SDL_BlitSurface(Map, &rect_zone_perso,ecran, &pos_zone_perso);
                     if(positionpersonnage.y<Pos_1.y)
                     {
                     SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
@@ -827,12 +849,17 @@ SDL_Flip(ecran);
                         SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
                     }
 
+
+
                     SDL_Flip(ecran);
 
                 }
 
                 pos_perso_y++;
                 positionpersonnage.y = pos_perso_y*32;
+
+                pos_zone_perso.y = positionpersonnage.y - 32;
+                rect_zone_perso.y = positionpersonnage.y - 32;
 
         break;
 
@@ -859,7 +886,7 @@ SDL_Flip(ecran);
                         decoupePerso.y=165;
 
                         positionpersonnage.x+=4;
-                        SDL_BlitSurface(Map,NULL,ecran,&positionMap);
+                        SDL_BlitSurface(Map, &rect_zone_perso,ecran, &pos_zone_perso);
                         if(positionpersonnage.y<Pos_1.y)
                         {
                         SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
@@ -877,6 +904,9 @@ SDL_Flip(ecran);
                         pos_perso_x++;
                         positionpersonnage.x = pos_perso_x*32- 32;
 
+                        pos_zone_perso.x = positionpersonnage.x - 32;
+                        rect_zone_perso.x = positionpersonnage.x - 32;
+
 
             break;
 
@@ -884,6 +914,7 @@ SDL_Flip(ecran);
 
                 decoupePerso.x=66;
                 decoupePerso.w=45;
+
 
                 if(!pass_chck(positionpersonnage,event,Carte,pos_perso_x,pos_perso_y,&queteCond) )
                     break;
@@ -903,7 +934,7 @@ SDL_Flip(ecran);
                         decoupePerso.y=165;
 
                             positionpersonnage.x-=4;
-                            SDL_BlitSurface(Map,NULL,ecran,&positionMap);
+                            SDL_BlitSurface(Map, &rect_zone_perso,ecran, &pos_zone_perso);
                             if(positionpersonnage.y<Pos_1.y)
                             {
                             SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
@@ -920,9 +951,13 @@ SDL_Flip(ecran);
                         }
                         pos_perso_x--;
                         positionpersonnage.x = pos_perso_x*32- 32;
+
+                        pos_zone_perso.x = positionpersonnage.x - 32;
+                        rect_zone_perso.x = positionpersonnage.x - 32;
+
             break;
 
-        }
+        } //Fin switch keydown
 
        if(warp_chck(pos_perso_x,pos_perso_y,&Carte, map_id))
         {
@@ -931,6 +966,9 @@ SDL_Flip(ecran);
 
             Map = Load_Map(map_id,&Carte);
             Sprite_1 = load_sprite(map_id,1);
+
+            SDL_BlitSurface(Map, NULL,ecran, &positionMap);
+
 
 
 
@@ -952,7 +990,7 @@ SDL_Flip(ecran);
 
             combat(&Perso,&skills_data,ecran,map_id);
             SDL_FillRect(ecran,NULL,SDL_MapRGB(ecran->format,0,0,0));
-            SDL_BlitSurface(Map, NULL, ecran, &positionMap);
+            SDL_BlitSurface(Map, NULL,ecran, &positionMap);
             SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
             SDL_BlitSurface(Sprite_1,&Decoupe_1,ecran,&Pos_1);
             }
@@ -962,7 +1000,7 @@ SDL_Flip(ecran);
 }
 
 
-    SDL_BlitSurface(Map, NULL, ecran, &positionMap);
+    SDL_BlitSurface(Map, &rect_zone_perso,ecran, &pos_zone_perso);
     SDL_BlitSurface(ecran,NULL,ecran, &positionMap);
 
     if(positionpersonnage.y<Pos_1.y)
