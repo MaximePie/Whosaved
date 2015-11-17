@@ -19,13 +19,13 @@
 #include "cartes.h"
 ////////////////////////////////////////////////////////////////////
 
-void parler(int debut, int fin, char *texte[99][999], SDL_Surface *ecran)
+void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran)
  {
      SDL_Color couleur = {255,0,0};
      SDL_Surface *Txt = NULL;
      int i = 0;
 
-     SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
+    SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
 
     SDL_Surface *error = IMG_Load("Sprites/error.png");
 
@@ -38,16 +38,16 @@ void parler(int debut, int fin, char *texte[99][999], SDL_Surface *ecran)
 
     SDL_Event event;
 
-    for (i = debut ; i < fin ; i++)
+    for (i = debut ; i <= fin  ; i++)
                     {
                         Txt = TTF_RenderText_Blended(police,texte[i],couleur);
                         SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
                         SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
 
-
                         SDL_Flip(ecran);
 
-                            if (i == 1)
+
+                            if (i == fin)
                         {
                             break;
                         }
