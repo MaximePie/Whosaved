@@ -9,6 +9,6 @@
 #define LARGEUR_ECRAN 640
 #define HAUTEUR_ECRAN 480
 
-#define DELAI_DEPLACEMENT 10
+#define DELAI_DEPLACEMENT 1 // 1 = Super rapide ! 100 = super lent !
 
 #endif // CONSTANTES_H_INCLUDED

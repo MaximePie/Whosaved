@@ -18,12 +18,17 @@
 
 #include "cartes.h"
 ////////////////////////////////////////////////////////////////////
-
-void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran)
+// On demande la série pour savoir si on affiche plusieurs lignes avant de pauser.
+void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int texte_rang[20], int texte_longueur[20])
  {
-     SDL_Color couleur = {255,0,0};
+    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
+    char temp[999] = "";
+
+
+     SDL_Color couleur = {200,180,20};
      SDL_Surface *Txt = NULL;
      int i = 0;
+     int limite = 50;
 
     SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
 
@@ -33,18 +38,75 @@ void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran)
 
 
     SDL_Rect pos_boite = {0,0}, pos_texte = {30,350};
-    int continuer = 1;
+    int continuer = 1, j = 0, k = 0;
 
 
     SDL_Event event;
 
     for (i = debut ; i <= fin  ; i++)
                     {
-                        Txt = TTF_RenderText_Blended(police,texte[i],couleur);
-                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
-                        SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
 
+
+                      /* if(texte_rang[j] == i) // Ok, on rentre dedans je crois.
+                        {
+                            couleur.b = 240;
+                            for (k = texte_rang[j]; k <= texte_rang[j] + texte_longueur[j] ; k++)
+                            {
+                                Txt = TTF_RenderText_Blended(police,texte[k],couleur);
+                                SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+                                pos_texte.y += 50;
+                            }
+
+                        j ++;
+                        i = k;
+                        pos_texte.y = 350;
+
+                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
                         SDL_Flip(ecran);
+
+                        } */
+
+                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
+
+                        if (strlen(texte[i]) > limite)
+                        { // while texte[i] != 32 !
+
+                            limite = 50;
+                            while(texte[i][limite] != 32)
+                            {
+                                limite --;
+                            }
+
+                            for (k = limite ; k <= strlen(texte[i]) ; k++)
+                            {
+                            temp[k - limite] = texte[i][k];
+                            }
+
+
+                            pos_texte.y += 32;
+                            Txt = TTF_RenderText_Blended(police,temp,couleur);
+                            SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+                            k = 0;
+
+                            pos_texte.y = 350;
+
+                            texte[i][limite] = '\0';
+                            Txt = TTF_RenderText_Blended(police,texte[i],couleur);
+                            SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+
+                            SDL_Flip(ecran);
+                        }
+
+                        else
+                        {
+
+                        Txt = TTF_RenderText_Blended(police,texte[i],couleur);
+                        SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+                        SDL_Flip(ecran);
+
+                        }
+
+
 
 
                             if (i == fin)
@@ -52,25 +114,10 @@ void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran)
                             break;
                         }
 
-                         while(continuer) // On attend que le joueur appuie sur w pour fermer la fenêtre. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
-                        {
-                        SDL_WaitEvent(&event);
-                            switch(event.type)
-                            {
-                                case SDL_KEYDOWN:
-                                switch (event.key.keysym.sym)
-                                {
-                                    case SDLK_z:
-                                    continuer = 0;
-                                    break;
-
-                                    default:
-                                        ;
-                                }
-                            }
-                        }
-                        continuer = 1;
+                        wait_clic();
                     }
+
+            SDL_EnableKeyRepeat(20,0);
 
 
  }
@@ -281,6 +328,28 @@ SDL_Rect load_pos(int map_id[2], int Sprite_id, int *Carte [15][20])
 return position;
 }
 
+void wait_clic(void)
+{
+    SDL_Event event;
+    int continuer = 1;
+    while(continuer) // On attend que le joueur appuie sur w pour fermer la fenêtre. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
+                        {
+                        SDL_WaitEvent(&event);
+                            switch(event.type)
+                            {
+                                case SDL_KEYDOWN:
+                                switch (event.key.keysym.sym)
+                                {
+                                    case SDLK_z:
+                                    continuer = 0;
+                                    break;
+
+                                    default:
+                                        ;
+                                }
+                            }
+                        }
+}
 
 void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rect Decoupe_1, SDL_Rect decoupePerso,int *Carte[15][20],SDL_Surface *ecran,sQueteconditions *Quete_cond)
 {
@@ -297,6 +366,8 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
 
     char Texte[99][999];
     SDL_Surface *Txt;
+    int texte_rang[20];
+    int texte_longueur[20];
 
     SDL_Event event;
 
@@ -319,47 +390,7 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
                 {
                     sprintf(Texte[0],"Hey !");
                     sprintf(Texte[1],"Tu veux une bonne biere sa mere ? ");
-
-
-                   /* Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
-                    SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
-                    SDL_BlitSurface(Txt,NULL,ecran,&pos_texte);
-                    SDL_Flip(ecran);
-
-                    for (i = 0; i < 2; i++)
-                    {
-                        Txt = TTF_RenderText_Blended(police,Texte[i],couleur);
-                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
-                        SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
-
-
-                        SDL_Flip(ecran);
-
-                            if (i == 1)
-                        {
-                            break;
-                        }
-
-                         while(continuer) // On attend que le joueur appuie sur w pour fermer la fenêtre. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
-                        {
-                        SDL_WaitEvent(&event);
-                            switch(event.type)
-                            {
-                                case SDL_KEYDOWN:
-                                switch (event.key.keysym.sym)
-                                {
-                                    case SDLK_z:
-                                    continuer = 0;
-                                    break;
-
-                                    default:
-                                        ;
-                                }
-                            }
-                        }
-                        continuer = 1;
-                    } *///Fin dialogue 1.
-                    parler(0,1,Texte,ecran);
+                    parler(0,1,Texte,ecran,texte_rang,texte_longueur);
 
                     while(continuer) // On attend que le joueur appuie sur y ou n  pour Oui ou Non. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
                         {
@@ -372,22 +403,21 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
 
                                     case SDLK_y:
                                     sprintf(Texte[0],"Vas-y mon p'tit, fais-toi plaisir ! ");
-                                    Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
-                                    SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
-                                    SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
+                                    parler(0,0,Texte,ecran,texte_rang,texte_longueur);
+                                    wait_clic();
                                     Quete_cond->biere = 1;
-
+                                    SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
                                     SDL_Flip(ecran);
 
                                     continuer = 0;
                                     break;
 
                                     case SDLK_n:
-                                        sprintf(Texte[0],"Non ? C'est dommage... elle est bonne !");
-                                        Txt = TTF_RenderText_Blended(police,Texte[0],couleur);
-                                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
-                                        SDL_BlitSurface (Txt,NULL,ecran,&pos_texte);
 
+                                        sprintf(Texte[0],"C'est dommage, elle est mega bonne !");
+                                        parler(0,0,Texte,ecran,texte_rang,texte_longueur);
+                                        wait_clic();
+                                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
                                         SDL_Flip(ecran);
                                         continuer = 0;
                                         break;
@@ -403,23 +433,7 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
 
 
                         continuer = 1;
-                     while(continuer) // (Une fois qu'il a donné sa réponse, soit il boit, soit il ne boit pas.) On attend que le joueur appuie sur w pour fermer la fenêtre. Il ne peut rien faire d'autre tant qu'il n'a pas fait ça.
-                        {
-                        SDL_WaitEvent(&event);
-                            switch(event.type)
-                            {
-                                case SDL_KEYDOWN:
-                                switch (event.key.keysym.sym)
-                                {
-                                    case SDLK_z:
-                                    continuer = 0;
-                                    break;
-
-                                    default:
-                                        ;
-                                }
-                            }
-                        }
+                     wait_clic();
 
 
                 }
@@ -429,9 +443,9 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
 
                 if ((Carte[pos_perso_y + 1 ][pos_perso_x - 1]  == 102 || Carte[pos_perso_y +1][pos_perso_x - 1] == 101) && decoupePerso.x == 187) //Si coffre du bas
                     {
-                        SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
-                        SDL_Flip(ecran);
-                        SDL_Delay(3000);
+                        sprintf(Texte[0],"Ce coffre a l'air verrouille, je me demande ce qu'il y a a l'interieur... Des revues porno peut-etre ?");
+                        parler(0,0,Texte,ecran,0,1);
+                        wait_clic();
 
 
 
@@ -520,8 +534,11 @@ void test(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rec
 
 
 
-void Warp(int *map_id,int *pos_perso_x, int *pos_perso_y,sQueteconditions *queteCond)
+void Warp(int *map_id,int *pos_perso_x, int *pos_perso_y,sQueteconditions *queteCond, SDL_Surface *ecran)
 {
+
+    char Texte[99][999];
+    int texte_rang[20],texte_longueur[20];
 
     switch(map_id[0])
     {
@@ -539,9 +556,24 @@ void Warp(int *map_id,int *pos_perso_x, int *pos_perso_y,sQueteconditions *quete
             *pos_perso_y = 1;
         }
 
-        if (*pos_perso_x  == 18 && *pos_perso_y  == 0)
+        if (*pos_perso_x  == 18 && *pos_perso_y  == 0) // Si escalier qui monte
         {
-            SDL_Delay(1000);
+            if (queteCond->biere == 0)
+            {
+                sprintf(Texte[0],"Hey !");
+                sprintf(Texte[1],"Attends ! On n'a meme pas fait connaissance et");
+                sprintf(Texte[2],"Tu veux deja partir ? Viens donc boire et patati et patata bla bla bla une biere avec nous ! ");
+                sprintf(Texte[3],"Une biere avec nous, gros degueulasse !");
+                texte_rang[0] = 2;
+                texte_longueur[0] = 2;
+
+                parler(0,3,Texte,ecran,texte_rang,texte_longueur);
+                wait_clic();
+            }
+            else
+            {
+                //changement de map
+            }
         }
 
     break;
@@ -678,13 +710,14 @@ void Monde_Ouvert(SDL_Surface *ecran)
 
 
 
-
+//Structures
     sJoueur Perso;
     sQueteconditions queteCond;
     sMESS_ITEMS skills_data = MESS_LoadItems("Skills.bin", 1);
     sMESS_ITEMS items_data = MESS_LoadItems("Inventaire1.bin",1);
     Ini_Joueur(&Perso);
     ini_Quete(&queteCond);
+///////////////////////////////:
 
 positionpersonnage.x=pos_perso_x*32 -32   + 3; //On colle le personnage à sa position pos_perso multipliés par le nombre de pixels (Ici pos_perso_x = 4 et pos_perso_y = 10 (On fait - 32 car le début d'un tableau commence à 0 et non à 1)
 positionpersonnage.y=pos_perso_y*32 ;
@@ -742,6 +775,7 @@ SDL_Flip(ecran);
 
                 case SDLK_z:
                     Action(map_id, pos_perso_x, pos_perso_y, Pos_1, Decoupe_1, decoupePerso, &Carte,ecran,&queteCond);
+                    SDL_BlitSurface(Map,NULL,ecran,&positionMap);
                     break;
 
 
@@ -962,10 +996,12 @@ SDL_Flip(ecran);
        if(warp_chck(pos_perso_x,pos_perso_y,&Carte, map_id))
         {
 
-            Warp(map_id,&pos_perso_x,&pos_perso_y,&queteCond);
+            Warp(map_id,&pos_perso_x,&pos_perso_y,&queteCond,ecran);
 
             Map = Load_Map(map_id,&Carte);
             Sprite_1 = load_sprite(map_id,1);
+            Decoupe_1 = load_decoupe(map_id, 1);
+            Pos_1 = load_pos(map_id, 1,Carte);
 
             SDL_BlitSurface(Map, NULL,ecran, &positionMap);
 

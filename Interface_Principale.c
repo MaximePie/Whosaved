@@ -548,7 +548,6 @@ int Select=0;
 int affEquip(sJoueur *Perso,int tabEquipement[7],SDL_Surface *ecran,SDL_Surface *refreshEquipement,SDL_Surface *texte,SDL_Rect postexte,SDL_Rect posrefreshEquipement,TTF_Font *police,SDL_Color noire,sMESS_ITEMS *items_data)
 {
 
-Ini_Joueur(Perso);
 int a=0;
 for (a=0;a<1;a++)
     {

@@ -1,7 +1,10 @@
 #ifndef MONDE_OUVERT_H_INCLUDED
 #define MONDE_OUVERT_H_INCLUDED
 
+void wait_clic(void);
+
 void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran);
+
 
 void succes(void);
 
@@ -13,8 +16,6 @@ SDL_Rect load_pos(int map_id[2], int Sprite_id, int *Carte [15][20]);
 
 void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rect Decoupe_1, SDL_Rect decoupePerso,int *Carte[15][20],SDL_Surface *ecran,sQueteconditions *Quete_cond);
 
-
-void Parler(int *map_id, int pos_perso_x, int pos_perso_y,SDL_Rect Pos_1, SDL_Rect Decoupe_1, SDL_Rect decoupePerso,int *Carte[15][20],SDL_Surface *ecran,sQueteconditions *Quete_cond);
 
 
 

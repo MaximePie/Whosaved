@@ -21,7 +21,6 @@
 int main(int argc, char *argv[])
 {   SDL_Surface *ecran=SDL_SetVideoMode(LARGEUR_ECRAN,HAUTEUR_ECRAN,32,SDL_HWSURFACE);
     TTF_Init();
-    SDL_Rect pos = {0,0};
 
     Afficher_Menu(ecran);
 
