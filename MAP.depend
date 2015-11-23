@@ -595,3 +595,176 @@
 	"Load_Items.h"
 	"Fenetres_Combat.h"
 
+1441564766 source:c:\users\admin\documents\projets\whosaved\actions_combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+	"LV_UP.h"
+
+1447665143 c:\users\admin\documents\projets\whosaved\structures.h
+	"Constantes.h"
+
+1447759867 c:\users\admin\documents\projets\whosaved\constantes.h
+
+1441304016 c:\users\admin\documents\projets\whosaved\load_items.h
+
+1432083510 c:\users\admin\documents\projets\whosaved\fenetres_combat.h
+
+1441363960 c:\users\admin\documents\projets\whosaved\actions_combat.h
+
+1432229626 c:\users\admin\documents\projets\whosaved\lv_up.h
+
+1441565466 source:c:\users\admin\documents\projets\whosaved\combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1447416005 source:c:\users\admin\documents\projets\whosaved\ecran_titre.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1432588290 source:c:\users\admin\documents\projets\whosaved\fenetre_combat.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1447789723 source:c:\users\admin\documents\projets\whosaved\interface_principale.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1441304016 source:c:\users\admin\documents\projets\whosaved\load_items.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+
+1432229626 source:c:\users\admin\documents\projets\whosaved\lv_up.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+	"Actions_Combat.h"
+
+1447835579 source:c:\users\admin\documents\projets\whosaved\main.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Combat.h"
+	"Monde_Ouvert.h"
+	"Ecran_Titre.h"
+
+1441301000 c:\users\admin\documents\projets\whosaved\combat.h
+
+1447835563 c:\users\admin\documents\projets\whosaved\monde_ouvert.h
+
+1432559244 c:\users\admin\documents\projets\whosaved\ecran_titre.h
+
+1447665159 source:c:\users\admin\documents\projets\whosaved\structures.c
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+
+1432078662 source:c:\users\admin\documents\projets\whosaved\tests.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Load_Items.h"
+	"Fenetres_Combat.h"
+
+1433268782 source:c:\users\admin\documents\projets\whosaved\carte_1.c
+
+1447868872 source:c:\users\admin\documents\projets\whosaved\monde_ouvert.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<SDL/SDL.h>
+	<SDL/SDL_image.h>
+	<SDL/SDL_ttf.h>
+	<time.h>
+	"Structures.h"
+	"Constantes.h"
+	"Interface_Principale.h"
+	"Load_Items.h"
+	"Combat.h"
+	"cartes.h"
+
+1433810268 c:\users\admin\documents\projets\whosaved\interface_principale.h
+
+1433267582 c:\users\admin\documents\projets\whosaved\cartes.h
+

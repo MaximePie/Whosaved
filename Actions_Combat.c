@@ -247,7 +247,7 @@ int Attack_monstre(sEnnemi *Monstre,int Vie_Perdue, int IDMonstre,sStatiques * R
   return Vie_Perdue;
 }
 
-void Attaque_Ennemi(sJoueur *Perso, sEnnemi *Monstre, sMESS_ITEMS *skills_data, sStatiques *Refresh0,int tabObjet[10],char *Pv_Max_P[3],char * Pv_P[3], int IDMonstre, sMESS_ITEMS *Skill_Monstre_data)
+void Attaque_Ennemi(sJoueur *Perso, sEnnemi *Monstre, sMESS_ITEMS *skills_data, sStatiques *Refresh0,int tabObjet[10],char Pv_Max_P[3],char  Pv_P[3], int IDMonstre, sMESS_ITEMS *Skill_Monstre_data)
 {
     int i = 0;
     SDL_Rect postexte = {425,35};
@@ -348,7 +348,6 @@ int SKILL(sJoueur *Perso, sEnnemi *Monstre, sMESS_ITEMS *skills_data, int tabObj
     SDL_Surface *texte = NULL;
     TTF_Font *police = TTF_OpenFont("carolingia.ttf" ,15);
 
-    int Diminution = 0 ;
 
     switch(tabObjet)
     {

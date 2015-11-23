@@ -10,6 +10,7 @@
 //Inclusion des headers
 #include "Structures.h"
 #include "Constantes.h"
+#include "Monde_Ouvert.h"
 
 #include "Interface_Principale.h"
 
@@ -19,7 +20,7 @@
 #include "cartes.h"
 ////////////////////////////////////////////////////////////////////
 // On demande la série pour savoir si on affiche plusieurs lignes avant de pauser.
-void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int texte_rang[20], int texte_longueur[20])
+int parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int texte_rang[20], int texte_longueur[20])
  {
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
     char temp[999] = "";
@@ -32,16 +33,14 @@ void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int tex
 
     SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
 
-    SDL_Surface *error = IMG_Load("Sprites/error.png");
 
     TTF_Font *police=TTF_OpenFont("carolingia.ttf",26); //C'est temporaire, c'est pour afficher les coordonnées du personnage, ainsi que le type de case sur lequel il se trouve.
 
 
     SDL_Rect pos_boite = {0,0}, pos_texte = {30,350};
-    int continuer = 1, j = 0, k = 0;
+    int k = 0;
 
 
-    SDL_Event event;
 
     for (i = debut ; i <= fin  ; i++)
                     {
@@ -69,8 +68,7 @@ void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int tex
                         SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
 
                         if (strlen(texte[i]) > limite)
-                        { // while texte[i] != 32 !
-
+                        {
                             limite = 50;
                             while(texte[i][limite] != 32)
                             {
@@ -81,7 +79,6 @@ void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int tex
                             {
                             temp[k - limite] = texte[i][k];
                             }
-
 
                             pos_texte.y += 32;
                             Txt = TTF_RenderText_Blended(police,temp,couleur);
@@ -119,7 +116,7 @@ void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int tex
 
             SDL_EnableKeyRepeat(20,0);
 
-
+    return EXIT_SUCCESS;
  }
 
 
@@ -309,7 +306,7 @@ SDL_Rect load_pos(int map_id[2], int Sprite_id, int *Carte [15][20])
                         position.x = 32 * 7;
                         position.y = 32 * 1;
 
-                        Carte[1 + 2] [7] = 2;
+                        Carte[1 + 2] [7] = 2; //Si tavernier rdc taverne 1
 
                     break;
 
@@ -355,23 +352,22 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
 {
     SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
 
-    SDL_Surface *error = IMG_Load("Sprites/error.png");
+    //SDL_Surface *error = IMG_Load("Sprites/error.png");
 
-    TTF_Font *police=TTF_OpenFont("carolingia.ttf",26); //C'est temporaire, c'est pour afficher les coordonnées du personnage, ainsi que le type de case sur lequel il se trouve.
-    SDL_Color couleur = {255,255,255};
+    //TTF_Font *police=TTF_OpenFont("carolingia.ttf",26); //C'est temporaire, c'est pour afficher les coordonnées du personnage, ainsi que le type de case sur lequel il se trouve.
+    //SDL_Color couleur = {255,255,255};
 
 
-    SDL_Rect pos_boite = {0,0}, pos_texte = {30,350};
-    int continuer = 1, i = 0;
+    SDL_Rect pos_boite = {0,0}; //pos_texte = {30,350};
+    int continuer = 1;
 
     char Texte[99][999];
-    SDL_Surface *Txt;
     int texte_rang[20];
     int texte_longueur[20];
 
     SDL_Event event;
 
-    int position_1[2] = {Pos_1.x / 32, Pos_1.y / 32};
+    //int position_1[2] = {Pos_1.x / 32, Pos_1.y / 32};
 
     SDL_Delay(50);
 
@@ -408,7 +404,6 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
                                     Quete_cond->biere = 1;
                                     SDL_BlitSurface(Boite_Dialogue,NULL,ecran,&pos_boite);
                                     SDL_Flip(ecran);
-
                                     continuer = 0;
                                     break;
 
@@ -508,29 +503,6 @@ int warp_chck(int pos_perso_x, int pos_perso_y, int *Carte[15][20], int *map_id)
     return 0;
 }
 
-
-void test(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_Rect Decoupe_1, SDL_Rect decoupePerso,int *Carte[15][20],SDL_Surface *ecran)
-{
-    SDL_Surface *Boite_Dialogue = IMG_Load("Sprites/GENERAL/Boite de dialogue.png");
-    SDL_Surface *error = IMG_Load("Sprites/error.png");
-
-    SDL_Rect pos_boite = {0,0};
-    int continuer = 1;
-
-    //char Texte[99][99][999];
-
-    SDL_Event event;
-
-    int position_1[2] = {Pos_1.x / 32, Pos_1.y / 32};
-
-    SDL_Delay(50);
-
-    SDL_BlitSurface(error,NULL,ecran,&pos_boite);
-    SDL_Flip(ecran);
-
-
-
-}
 
 
 
@@ -657,7 +629,7 @@ int pass_chck(SDL_Rect positionperso, SDL_Event event, int carte [15][20], int p
 
 
 
-void Monde_Ouvert(SDL_Surface *ecran)
+int Monde_Ouvert(SDL_Surface *ecran)
 {
     TTF_Init();
     SDL_Surface * Texte=NULL;
@@ -688,11 +660,11 @@ void Monde_Ouvert(SDL_Surface *ecran)
 
 
 
-    SDL_Surface *error = IMG_Load("Sprites/error.png");
+   // SDL_Surface *error = IMG_Load("Sprites/error.png");
 
 
 
-    SDL_Surface *Sprite_1 = load_sprite(map_id,1), *Sprite_2 = NULL, *Sprite_3 = NULL,*Sprite_4 = NULL,*Sprite_5 = NULL,*Sprite_6 = NULL, *Sprite_7 = NULL;
+    SDL_Surface *Sprite_1 = load_sprite(map_id,1);// *Sprite_2 = NULL, *Sprite_3 = NULL,*Sprite_4 = NULL,*Sprite_5 = NULL,*Sprite_6 = NULL, *Sprite_7 = NULL; -> remplacer par SDL_Surface *Sprite[10];
     SDL_Rect Decoupe_1 = load_decoupe(map_id, 1);
     SDL_Rect Pos_1 = load_pos(map_id, 1,Carte);
 
@@ -768,7 +740,7 @@ SDL_Flip(ecran);
                 break;
 
                 case SDLK_c:
-                    test(map_id, pos_perso_x, pos_perso_y, Pos_1, Decoupe_1, decoupePerso, &Carte,ecran);
+                    //test(map_id, pos_perso_x, pos_perso_y, Pos_1, Decoupe_1, decoupePerso, &Carte,ecran);
                     SDL_Delay(1000);
                     break;
 
@@ -814,6 +786,10 @@ SDL_Flip(ecran);
 
                         positionpersonnage.y-=4;
                         SDL_BlitSurface(Map, &rect_zone_perso,ecran, &pos_zone_perso);
+
+                    if (Pos_1.x/32 == pos_perso_x)
+                    {
+
                         if(positionpersonnage.y<Pos_1.y)
                             {
                             SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
@@ -825,6 +801,13 @@ SDL_Flip(ecran);
                                 SDL_BlitSurface(Sprite_1,&Decoupe_1,ecran,&Pos_1);
                                 SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
                             }
+                    }
+
+                    else
+                    {
+                        SDL_BlitSurface(personnage, &decoupePerso, ecran, &positionpersonnage);
+                    }
+
                         SDL_Flip(ecran);
                     }
 

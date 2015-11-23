@@ -12,6 +12,7 @@
 #include "Load_Items.h"
 #include "Fenetres_Combat.h"
 #include "Actions_Combat.h"
+#include "Monde_Ouvert.h"
 
 
 void Afficher_Menu(SDL_Surface *ecran)

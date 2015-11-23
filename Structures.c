@@ -27,7 +27,7 @@ int Ini_ID(int mapid1, int mapid2)
             }
     break;
     }
-
+return 0;
 }
 
 //Initialisation du joueur avant le combat, cette fonction sera à supprimer par la suite !
@@ -226,6 +226,8 @@ sMESS_ITEMS Load_Skills_Monstre(int IDMonstre)
             return MESS_LoadItems("Stawk.bin",0);
         break;
     }
+
+return MESS_LoadItems("Gwigli.bin",0);
 }
 
 void ini_Quete(sQueteconditions *Quete_cond)

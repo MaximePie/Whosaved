@@ -23,13 +23,13 @@ void combat(sJoueur *Perso,sMESS_ITEMS *skills_data,SDL_Surface *ecran, int map_
     sStatiques Refresh0;
     Refresh0.ecran = ecran;
     //Temporaire
-    SDL_Surface *Coordonnees=NULL;
+    //SDL_Surface *Coordonnees=NULL;
 
 //Initiaisation
 
 int tabObjet[10];
 int deplaList=0;
-int deroulement;
+int deroulement = 0;
 int listType=0;
 int i=0;
 int Mort=0;
@@ -38,7 +38,7 @@ SDL_Rect postexte;
 SDL_Surface *texte =NULL;
 TTF_Font *police=TTF_OpenFont("carolingia.ttf",25);
 SDL_Color noire = {135,65,14};
-SDL_Rect position,positionBarreDeManaIC,positionCurseur,positionFenetre,positionFenetreListe,decoupeF,positionFenetreSelect,posMiniOnglet,position_Mana_Perso;
+SDL_Rect position,/*positionBarreDeManaIC*/positionCurseur,positionFenetre,positionFenetreListe,decoupeF,positionFenetreSelect,posMiniOnglet;//position_Mana_Perso;
 
 skills_data->data[2].possede=1;
 skills_data->data[2].equipe=1;
@@ -113,13 +113,13 @@ int randFuite=0;
 noire.r = 0;
 noire.g = 0;
 police = TTF_OpenFont("carolingia.ttf" ,45);
-char Niveau_P[2], Pv_Max_P[3], Pv_P[3], Mana_Max_P[3], Mana_P[3], Nom_M[16];
+char Niveau_P[2], Pv_Max_P[3], Pv_P[3];// Mana_Max_P[3]; //Mana_P[3]; //Nom_M[16];
 sprintf(Niveau_P,"%d",Perso->niveau);
 
-SDL_Surface *Niveau_Perso = TTF_RenderText_Blended(police ,Niveau_P,noire);
+//SDL_Surface *Niveau_Perso = TTF_RenderText_Blended(police ,Niveau_P,noire);
 Refresh0.Niveau_Perso = TTF_RenderText_Blended(police ,Niveau_P,noire);
 
-SDL_Rect posNiveau={27,21};
+//SDL_Rect posNiveau={27,21};
 Refresh0.posNiveau.x=27;
 Refresh0.posNiveau.y=21;
 
@@ -128,9 +128,9 @@ int Vie_Actuelle_Decoupe=0; //Il s'agit d'une variable utilisée dans les fonctio
 police = TTF_OpenFont("carolingia.ttf" ,24);
 sprintf(Pv_Max_P,"/%d",Perso->pv_max);
 sprintf(Pv_P,"%d",Perso->pv);
-SDL_Surface *Pv_Max_Perso = TTF_RenderText_Blended(police, Pv_Max_P, noire), *Pv_Perso = TTF_RenderText_Blended(police, Pv_P, noire);
+SDL_Surface /**Pv_Max_Perso = TTF_RenderText_Blended(police, Pv_Max_P, noire),*/ *Pv_Perso = TTF_RenderText_Blended(police, Pv_P, noire);
 
-SDL_Rect pos_Pv_Max={205,14}, pos_Pv_P={170,14};
+//pos_Pv_Max={205,14}; pos_Pv_P={170,14};
 
 Refresh0.Pv_Max_Perso = TTF_RenderText_Blended(police, Pv_Max_P, noire);
 Refresh0.Pv_Perso = TTF_RenderText_Blended(police, Pv_P, noire);
@@ -143,7 +143,7 @@ Refresh0.pos_Pv_P.y = 14;
 
 
 
-SDL_Surface *Mana_Perso;
+//SDL_Surface *Mana_Perso;
 
 
 noire.r = 135;
@@ -159,7 +159,6 @@ int Vie_Perdue=0, Diminution=0;
 //AFFICHAGE TEXTE
 char Texte[16][128];
 sprintf(Texte[0],"Que faire ?");
-char Texte_2[16];
 //Texte[2] = "Jean le troll perd x PV !
 sprintf(Texte[3],"%s Attaque !",Monstre.name);
 
@@ -176,11 +175,11 @@ sprintf(Texte[10],"Level up !");
 postexte.x=420;
 postexte.y=16;
 //FIN COMBAT
-int Xp_reste=0, Xp_reste_aff=0;
+//int Xp_reste=0, Xp_reste_aff=0;
 ///////////////////
 
 //LEVEL_UP
-int attaque=0, vie = 0, pallier=0, defense=0;
+//int attaque=0, vie = 0, pallier=0, defense=0;
 ////////////////////////
 
 
@@ -469,12 +468,12 @@ Refresh(Refresh0);
                         {
                         Refresh(Refresh0);
 
-                        sprintf(Texte,"Pas assez de mana ! ");
-                        texte = TTF_RenderText_Blended(police,Texte,noire);
+                        sprintf(Texte[0],"Pas assez de mana ! ");
+                        texte = TTF_RenderText_Blended(police,Texte[0],noire);
                         SDL_BlitSurface(texte,NULL,Refresh0.ecran,&postexte);
                         SDL_Flip(Refresh0.ecran);
                         SDL_Delay(1000);
-                        sprintf(Texte,"Que faire ? ");
+                        sprintf(Texte[0],"Que faire ? ");
 
                         Refresh(Refresh0);
                         break;
@@ -489,7 +488,7 @@ Refresh(Refresh0);
                                 break;
                             }
 
-                        Attaque_Ennemi(Perso,&Monstre, skills_data, &Refresh0, tabObjet[0], &Pv_Max_P, &Pv_P, IDMonstre, &skills_monstre_data);
+                        Attaque_Ennemi(Perso,&Monstre, skills_data, &Refresh0, tabObjet[0], Pv_Max_P, Pv_P, IDMonstre, &skills_monstre_data);
                              if(Perso->pv<=0)
                                     continuer=0;
 
@@ -509,12 +508,12 @@ Refresh(Refresh0);
                         {
                         Refresh(Refresh0);
 
-                        sprintf(Texte,"Pas assez de mana ! ");
-                        texte = TTF_RenderText_Blended(police,Texte,noire);
+                        sprintf(Texte[0],"Pas assez de mana ! ");
+                        texte = TTF_RenderText_Blended(police,Texte[0],noire);
                         SDL_BlitSurface(texte,NULL,Refresh0.ecran,&postexte);
                         SDL_Flip(Refresh0.ecran);
                         SDL_Delay(1000);
-                        sprintf(Texte,"Que faire ? ");
+                        sprintf(Texte[0],"Que faire ? ");
 
                         Refresh(Refresh0);
                         break;
@@ -531,7 +530,7 @@ Refresh(Refresh0);
                                 break;
                             }
 
-                        Attaque_Ennemi(Perso,&Monstre, skills_data, &Refresh0, tabObjet[1], &Pv_Max_P, &Pv_P,IDMonstre, &skills_monstre_data);
+                        Attaque_Ennemi(Perso,&Monstre, skills_data, &Refresh0, tabObjet[1], Pv_Max_P, Pv_P,IDMonstre, &skills_monstre_data);
                              if(Perso->pv<=0)
                                     continuer=0;
 

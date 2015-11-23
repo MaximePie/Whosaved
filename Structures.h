@@ -122,6 +122,8 @@ typedef struct
 }   sStatiques;
 
 
+int Ini_ID(int mapid1, int mapid2);
+
 void Ini_Joueur(sJoueur* Perso);
 void Ini_Ennemi(sEnnemi* Monstren,int IDMonstre);
 void Ini_Sprites(sStatiques *Refresh, sJoueur* Perso,int IDMonstre);

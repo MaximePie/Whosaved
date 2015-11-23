@@ -3,7 +3,7 @@
 
 void wait_clic(void);
 
-void parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran);
+int parler(int debut, int fin, char texte[99][999], SDL_Surface *ecran, int texte_rang[20], int texte_longueur[20]);
 
 
 void succes(void);
@@ -24,7 +24,7 @@ void Action(int *map_id, int pos_perso_x, int pos_perso_y, SDL_Rect Pos_1, SDL_R
 
 void transition(SDL_Surface *ecran);
 
-void Monde_Ouvert(SDL_Surface *ecran);
+int Monde_Ouvert(SDL_Surface *ecran);
 
 
 
